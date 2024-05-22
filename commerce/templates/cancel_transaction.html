@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cancel Transaction</title>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Transaction Canceled</h2>
+        <p>Your transaction has been canceled.</p>
+        <!-- Link back to home page -->
+        <a href="{% url 'index' %}" class="btn btn-primary">Back to Home</a>
+    </div>
+    {% bootstrap_javascript %}
+</body>
+</html>

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+
+<div class="container">
+    <h2 class="mt-5">Register With Debby's Store</h2>
+    <a href="{{ request.META.HTTP_REFERER }}" class="btn btn-outline-primary mt-3">Back</a>
+    <form method="post" class="mt-3">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="form-check mb-3">
+            <input type="checkbox" class="form-check-input" id="agreeTerms">
+            <label class="form-check-label" for="agreeTerms">I agree with Debby's Store's <a href="{% url 'term' %}">Terms of service</a> and <a href="{% url 'privacy' %}">Privacy Policy</a></label>
+        </div>
+        <button type="submit" class="btn btn-primary">Register</button>
+    </form>
+    <p class="mt-3">Log In <a href="{% url 'login' %}">HERE</a></p>
+</div>
+
+{% bootstrap_javascript %}
+{% endblock %}

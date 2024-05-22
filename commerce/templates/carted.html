@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+
+<div class="container">
+    <h2>Paid Orders</h2>
+    <div class="mb-4">
+        <a href="/" class="btn btn-primary">Home</a>
+        <a href="{% url 'orders' %}" class="btn btn-primary">View Cart</a>
+    </div>
+
+    {% if obj %}
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">S/N</th>
+                <th scope="col">Product</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Price</th>
+                <th scope="col">Date</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for ob in obj %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td><a href="{% url 'detail' ob.product.pk %}">{{ ob.product }}</a></td>
+                <td>{{ ob.quantity }}</td>
+                <td>NGN {{ ob.get_price }}</td>
+                <td>{{ ob.date_ordered }}</td>
+                <td><a href="{% url 'query' ob.pk %}" class="btn btn-primary">Query Transaction</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>No Paid Order at the moment</p>
+    {% endif %}
+</div>
+
+{% bootstrap_javascript %}
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+
+<div class="container">
+    <h2 class="mt-5">Error</h2>
+    <h3 class="mt-3">Dear {{ request.user.username }}</h3>
+    <p class="mt-3">Payment error. Kindly try again.</p>
+    <a href="{% url 'orders' %}" class="btn btn-primary mt-3">Back</a>
+</div>
+
+{% bootstrap_javascript %}
+{% endblock %}

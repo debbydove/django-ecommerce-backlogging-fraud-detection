@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+
+<div class="container">
+    <h2 class="mt-5">Success</h2>
+    <h3>Dear {{ user.username }}</h3>
+    <p>Payment successful. Expect delivery soon</p>
+    <a href="{% url 'paid' %}" class="btn btn-primary">View Paid Orders</a>
+</div>
+
+{% bootstrap_javascript %}
+{% endblock %}

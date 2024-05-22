@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+
+<div class="container">
+    <h2 class="mt-5">Query Success</h2>
+    <p>Your query has been received and will be attended to.<br>
+    A reply email will be sent to you</p>
+    <a href="{% url 'paid' %}" class="btn btn-primary">Back</a>
+</div>
+
+{% bootstrap_javascript %}
+{% endblock %}

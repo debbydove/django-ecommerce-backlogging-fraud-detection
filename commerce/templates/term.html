@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+<h1>Terms of Service</h1>
+<a href="{{request.META.HTTP_REFERER}}">Back</a>
+<p>This is the terms of service page content.</p>
+{% bootstrap_javascript %}
+{% endblock %}

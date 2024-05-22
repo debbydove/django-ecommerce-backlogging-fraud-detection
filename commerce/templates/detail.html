@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+
+<div class="container">
+    <a href="/" class="btn btn-primary">Back</a>
+    <h2>{{ obj.name }}</h2>
+    <p>Category: <a href="{% url 'category' obj.category %}">{{ obj.category }}</a> &nbsp; &nbsp; <span style="font-weight: bolder; font-size: 25px;">NGN {{ obj.price }}</span></p>
+    <img src="{{ obj.image.url }}" class="img-fluid" style="max-height: 200px; max-width: 200px;" alt="{{ obj.name }}"><br><br>
+    <p>Description: {{ obj.description }}</p>
+    <p>Search Tags: {{ obj.search_tag1 }} {% if obj.search_tag2 %}&nbsp; &nbsp; {{ obj.search_tag2 }} {% endif %} {% if obj.search_tag3 %}&nbsp; &nbsp; {{ obj.search_tag3 }}{% endif %}</p>
+    <a href="{% url 'addorder' obj.name %}" class="btn btn-primary">Add to Cart</a><br><br>
+    <p>Likes: {{ obj.number_of_likes }}</p>
+    <form method="POST" action="{% url 'like' obj.pk %}">
+        {% csrf_token %}
+        {% if liked %}
+            <button type="submit" class="btn btn-secondary" name="obj_pk" value="{{ obj.pk }}">Unlike</button>
+        {% else %}
+            <button type="submit" class="btn btn-primary" name="obj_pk" value="{{ obj.pk }}">Like</button>
+        {% endif %}
+    </form><br><hr><br>
+    <h2>Product Reviews ({{ data_c }})</h2>
+    <a href="{% url 'addreview' obj.pk %}" class="btn btn-primary">Add Review</a><br><br>
+    {% for review in data %}
+        {{ forloop.counter }} - By <b>{{ review.buyer }}</b>
+        <p>&nbsp; &nbsp; &nbsp; {{ review.review }}</p><br>
+    {% empty %}
+        <p>No reviews on this product</p>
+    {% endfor %}
+</div>
+
+{% bootstrap_javascript %}
+{% endblock %}

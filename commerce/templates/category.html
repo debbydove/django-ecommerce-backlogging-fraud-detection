@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+
+<div class="container">
+    <h2>Products ({{ obj_c }})</h2>
+    <a href="{% url 'orders' %}" class="btn btn-primary">View Cart</a>
+    <hr>
+
+    {% for product in obj %}
+    <div class="row mb-4">
+        <div class="col-md-4">
+            <img src="{{ product.image.url }}" class="img-fluid" alt="{{ product.name }}">
+        </div>
+        <div class="col-md-8">
+            <h3><a href="{% url 'detail' product.pk %}">{{ product.name }}</a></h3>
+            <p>Likes: {{ product.number_of_likes }}</p>
+            <p>{{ product.description|slice:25 }}...</p>
+            <p>Category: {{ product.category }}</p>
+            <p><span style="font-size: larger; font-weight: bolder;">NGN {{ product.price }}</span></p>
+        </div>
+    </div>
+    <hr>
+    {% empty %}
+    <p>No results found</p>
+    {% endfor %}
+</div>
+
+{% bootstrap_javascript %}
+{% endblock %}

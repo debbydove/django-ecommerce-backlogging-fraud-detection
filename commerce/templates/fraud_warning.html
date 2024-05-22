@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+
+<div class="container">
+    <h2 class="mt-5">Fraud Warning</h2>
+    <p>{{ warning_message }}</p>
+    <p>What would you like to do?</p>
+    <form action="{% url 'cancel_transaction' %}" method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Cancel Transaction</button>
+    </form>
+    <hr class="my-4">
+    <div class="mt-4">
+        <h2>If you believe this transaction is not fraudulent, please contact us immediately.</h2>
+        <p>Your transaction has been canceled.</p>
+        <!-- Link to contact admin via email -->
+        <a href="mailto:deborah@gmail.com" class="btn btn-primary">Contact Admin: deborah@gmail.com</a>
+    </div>
+</div>
+
+{% bootstrap_javascript %}
+{% endblock %}

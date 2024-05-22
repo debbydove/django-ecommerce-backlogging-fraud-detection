@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+
+<div class="container">
+    <h2>Check Out Order</h2>
+    <div class="mb-3">
+        <h3>Product: {{ obj.product }} &nbsp; &nbsp; &nbsp; NGN {{ obj.get_price }}</h3>
+    </div>
+    <a href="{% url 'orders' %}" class="btn btn-primary">Back</a>
+    <br><br>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Pay</button>
+    </form>
+</div>
+
+{% bootstrap_javascript %}
+{% endblock %}
