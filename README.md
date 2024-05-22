@@ -21,6 +21,3 @@ A site that displays products for sale to the general public, allowing only auth
 * python manage.py makemigrations
 * python manage.py migrate
 * python manage.py runserver
-
-# Where To Find Me
-[Visit My Website](https://peterolayemi.github.io)
